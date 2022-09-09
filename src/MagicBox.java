@@ -1,15 +1,15 @@
 import java.util.Random;
 
-public class MagicBox {
+public class MagicBox<T> {
 
 
-    public String[] boxSlots;
+    protected T[] boxSlots;
 
-    public MagicBox(int maxItems) {
-        this.boxSlots = new String[maxItems];
+    protected MagicBox(int maxItems) {
+        this.boxSlots = (T[]) new Object[maxItems];
     }
 
-    public boolean add(String item) {
+    protected boolean add(T item) {
         for (int i = 0; i < boxSlots.length; i++) {
             if (boxSlots[i] == null) {
                 boxSlots[i] = item;
@@ -19,7 +19,7 @@ public class MagicBox {
         return false;
     }
 
-    public void pick() throws RuntimeException {
+    protected void pick() throws RuntimeException {
         int a = 0;
         for (int i = 0; i < boxSlots.length; i++) {
             if (boxSlots[i] == null) {
